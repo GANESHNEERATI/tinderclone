@@ -2,16 +2,14 @@ import express from 'express';
 import mongoose from 'mongoose';
 import Cards from './dbCards.js';
 import Cors from 'cors';
-
+import dotenv from 'dotenv'
 
 //App Config
-
-const dbConnect="mongodb+srv://ganeshnodejs:Akki1995@cluster0.lywnu.mongodb.net/tender_clone?retryWrites=true&w=majority";
-
-
-
+dotenv.config();
 const app=express();
 const port=process.env.PORT || 8001;
+//const dbConnect="mongodb+srv://admin:J1vXj24K3V0lynBE@cluster0.h93yd.mongodb.net/tender-clone1?retryWrites=true&w=majority";
+
 
 //Middlewares
 
@@ -20,10 +18,9 @@ app.use(Cors())
 
 //DB config
 
-mongoose.connect(dbConnect,{
+mongoose.connect(process.env.DB_CONNECT,{
   useNewUrlParser:true,
-  useCreateIndex:true,
-  useUnifiedTopology:true
+ 
 
 },
 ()=>console.log("connected to db")
