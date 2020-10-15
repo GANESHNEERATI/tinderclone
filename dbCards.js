@@ -1,10 +1,20 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
+const { ObjectId } = mongoose.Schema.Types;
+const cardSchema = mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
 
-const  cardSchema=mongoose.Schema({
-    name:String,
+  imgUrl: {
+    type: String,
+    required: true,
+  },
+  postedBy: {
+    type: ObjectId,
 
-    imgUrl:String
-    
-})
+    ref: "userModel",
+  },
+});
 
-export default mongoose.model('Cards',cardSchema); 
+export default mongoose.model("Cards", cardSchema);
